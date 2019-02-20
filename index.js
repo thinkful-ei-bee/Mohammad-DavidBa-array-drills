@@ -24,3 +24,10 @@ function min(numbers) {
   return smallestNumber;
 }
 
+function average(numbers){
+  let total = 0;
+  numbers.array.forEach(number => {
+    total += number;
+  });
+  return total/numbers.length;
+}
