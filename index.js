@@ -136,6 +136,24 @@ const totalMovementArray = turtleSteps.map(addSteps);
 console.log(totalMovementArray);
 
 totalMovementArray.forEach(step =>console.log(step));
-//`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+let input = 'noggin oreo the moon time tele steed his tent apollo her lives though shoo tofu budapest';
+function decode(words){
+  //convert words to array
+  let wordsArray =  words.split(' ');
+  return  wordsArray.reduce(function(accumulater, word){
+    if(word.length === 3){
+      accumulater += ' ';
+    }
+    else{
+      accumulater += word[word.length-1].toUpperCase();
+    }
+    return accumulater;
+  }, ' ');
+}
+console.log(decode(input));
+
 
 
