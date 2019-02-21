@@ -1,52 +1,57 @@
 'use strict';
-// function max(numbers) {  
-//   let largestNumber = numbers[0];
-//   let count = 0;
-//   while(count <= numbers.length){
-//     if(largestNumber < numbers[count]){
-//       largestNumber = numbers[count];
-//     }
-//     count ++;
-//   }
-//   return largestNumber;
-// }
+function max(numbers) {  
+  let largestNumber = numbers[0];
+  let count = 0;
+  while(count <= numbers.length){
+    if(largestNumber < numbers[count]){
+      largestNumber = numbers[count];
+    }
+    count ++;
+  }
+  return largestNumber;
+}
   
-// function min(numbers) {
-//   // your code here
-//   let smallestNumber = numbers[0];
-//   let count = 0;
-//   while(count <= numbers.length){
-//     if(smallestNumber > numbers[count]){
-//       smallestNumber = numbers[count];
-//     }
-//     count ++;
-//   }
-//   return smallestNumber;
-// }
 
-// function average(numbers){
-//   let total = 0;
-//   numbers.array.forEach(number => {
-//     total += number;
-//   });
-//   return total/numbers.length;
-// }
+//========================================================================================================
+function min(numbers) {
+  // your code here
+  let smallestNumber = numbers[0];
+  let count = 0;
+  while(count <= numbers.length){
+    if(smallestNumber > numbers[count]){
+      smallestNumber = numbers[count];
+    }
+    count ++;
+  }
+  return smallestNumber;
+}
 
-// function repeat(fn, n){
-//   for(let i = 0; i < n; i++){
-//     fn(); 
-//   }  
-// }
-// function hello(){
-//   console.log('Hello world');
-// }
-// function goodbye(){
-//   console.log('Goodbye world');
-// }
-// repeat(hello, 5);
-// repeat(goodbye, 5);
+//==========================================================================================================
 
+function average(numbers){
+  let total = 0;
+  numbers.array.forEach(number => {
+    total += number;
+  });
+  return total/numbers.length;
+}
 
+//===========================================================================================================
+function repeat(fn, n){
+  for(let i = 0; i < n; i++){
+    fn(); 
+  }  
+}
+function hello(){
+  console.log('Hello world');
+}
+function goodbye(){
+  console.log('Goodbye world');
+}
+repeat(hello, 5);
+repeat(goodbye, 5);
+
+//============================================================================================================
 function filter(arr, fn) {
   let newArray = [];
   for(let i = 0; i < arr.length; i++){
@@ -71,3 +76,66 @@ const filteredNames = filter(myNames, function(name) {
 
 console.log(filteredNames); // => ['Rich', 'Ray']
 // <---- DO NOT EDIT BETWEEN THESE LINES
+
+//====================================================================================================================================
+function hazardWarningCreator(typeOfWarning){
+  let warningCounter = 0;
+  return function(location){
+    warningCounter ++;
+    let oneTime = 'time';
+    let noOfTimes = 'times';
+    if(warningCounter === 0 || warningCounter > 1){
+      console.log (`DANGER! There is a ${typeOfWarning} hazard at ${location}!`);
+      console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} ${noOfTimes} today!`);
+    }
+    else{
+      console.log (`DANGER! There is a ${typeOfWarning} hazard at ${location}!`);
+      console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter} ${oneTime} today!`);
+    }
+    
+  };
+}
+const rocksWarning = hazardWarningCreator('Rocks on the Road');
+const potholesWarning = hazardWarningCreator('Potholes on the Road');
+const deadAnimalsWarning = hazardWarningCreator('Dead Animals on the Road'); 
+
+rocksWarning('Main St and Pacific Ave');
+// => DANGER There is a Rocks on the Road hazard at Main St and Pacific Ave
+// => The Rocks on the Road hazard has triggered 1 time(s) today!
+
+rocksWarning('Centinela Ave and Olympic Blvd');
+// => DANGER There is a Rocks on the Road hazard at Centinela Ave and Olympic Blvd
+// => The Rocks on the Road hazard has triggered 2 time(s) today!
+
+// Invoke the other hazard creators you instantiated, too
+potholesWarning('Howard street and Ridge Blvd');
+potholesWarning('California street and Howard Blvd');
+deadAnimalsWarning('McCormick Blvd and oakton Street');
+deadAnimalsWarning('Main street and Dodge Blvd');
+//=================================================================================================================================
+
+let turtleSteps = [[0, 0], [0, 5], [-1, -3], [-3, 1], [2, -4], [3, 2]];
+function isRightSteps(turtleStep){
+  console.log(turtleStep);
+  if(turtleStep[0] < 0 || turtleStep[1] < 0){
+    //console.log(`turtle step 0 is ${turtleStep[0]} and turtle step 1 is ${turtleStep[1]}`);
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+const newTurtleStepsArray = turtleSteps.filter(isRightSteps);
+console.log('forward and right steps ' + newTurtleStepsArray);
+
+function addSteps(step){
+  console.log(`turtle move 1st is ${step[0]} and turtle move2nd is ${step[1]}`);
+  return (Math.abs(step[0]+step[1]));
+}
+const totalMovementArray = turtleSteps.map(addSteps);
+console.log(totalMovementArray);
+
+totalMovementArray.forEach(step =>console.log(step));
+//`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
